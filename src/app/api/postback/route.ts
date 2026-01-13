@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { Prisma } from '@prisma/client'
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,26 +32,28 @@ export async function POST(request: NextRequest) {
     const trackingLink = click.trackingLink
 
     // Mark click as converted
+    const saleAmountNum = amount ? parseFloat(amount.toString()) : 0
+    const saleAmount = new Prisma.Decimal(saleAmountNum)
+    
     await prisma.linkClick.update({
       where: { id: click_id },
       data: {
         converted: true,
         convertedAt: new Date(),
-        conversionValue: amount ? parseFloat(amount.toString()) : null,
+        conversionValue: amount ? new Prisma.Decimal(amount.toString()) : null,
       },
     })
 
     // Calculate commission amount
-    let commissionAmount = 0
-    const saleAmount = amount ? parseFloat(amount.toString()) : 0
+    let commissionAmount = new Prisma.Decimal(0)
 
     if (trackingLink.advertiser.commissionType === 'percentage') {
       const rate = parseFloat(trackingLink.advertiser.commissionRate.replace('%', ''))
-      commissionAmount = (saleAmount * rate) / 100
+      commissionAmount = new Prisma.Decimal((saleAmountNum * rate) / 100)
     } else if (trackingLink.advertiser.commissionType === 'fixed') {
-      commissionAmount = parseFloat(trackingLink.advertiser.commissionRate)
+      commissionAmount = new Prisma.Decimal(trackingLink.advertiser.commissionRate)
     } else if (trackingLink.advertiser.commissionType === 'cpa') {
-      commissionAmount = parseFloat(trackingLink.advertiser.commissionRate)
+      commissionAmount = new Prisma.Decimal(trackingLink.advertiser.commissionRate)
     }
 
     // Create commission record
@@ -82,7 +85,7 @@ export async function POST(request: NextRequest) {
       success: true,
       commission: {
         id: commission.id,
-        amount: commissionAmount,
+        amount: commission.amount.toString(),
         status: commission.status,
       },
     })
@@ -129,26 +132,28 @@ export async function GET(request: NextRequest) {
     const trackingLink = click.trackingLink
 
     // Mark click as converted
+    const saleAmountNum = amount ? parseFloat(amount) : 0
+    const saleAmount = new Prisma.Decimal(saleAmountNum)
+    
     await prisma.linkClick.update({
       where: { id: click_id },
       data: {
         converted: true,
         convertedAt: new Date(),
-        conversionValue: amount ? parseFloat(amount) : null,
+        conversionValue: amount ? new Prisma.Decimal(amount) : null,
       },
     })
 
     // Calculate commission amount
-    let commissionAmount = 0
-    const saleAmount = amount ? parseFloat(amount) : 0
+    let commissionAmount = new Prisma.Decimal(0)
 
     if (trackingLink.advertiser.commissionType === 'percentage') {
       const rate = parseFloat(trackingLink.advertiser.commissionRate.replace('%', ''))
-      commissionAmount = (saleAmount * rate) / 100
+      commissionAmount = new Prisma.Decimal((saleAmountNum * rate) / 100)
     } else if (trackingLink.advertiser.commissionType === 'fixed') {
-      commissionAmount = parseFloat(trackingLink.advertiser.commissionRate)
+      commissionAmount = new Prisma.Decimal(trackingLink.advertiser.commissionRate)
     } else if (trackingLink.advertiser.commissionType === 'cpa') {
-      commissionAmount = parseFloat(trackingLink.advertiser.commissionRate)
+      commissionAmount = new Prisma.Decimal(trackingLink.advertiser.commissionRate)
     }
 
     // Create commission record
@@ -180,7 +185,7 @@ export async function GET(request: NextRequest) {
       success: true,
       commission: {
         id: commission.id,
-        amount: commissionAmount,
+        amount: commission.amount.toString(),
         status: commission.status,
       },
     })
@@ -192,4 +197,3 @@ export async function GET(request: NextRequest) {
     )
   }
 }
-
