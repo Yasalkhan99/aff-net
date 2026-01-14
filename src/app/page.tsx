@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Home() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -178,22 +179,38 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section className="relative bg-gray-100 h-[600px] flex items-center">
+      <section className="relative bg-gray-100 min-h-[600px] flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-2xl">
-            <h1 className="text-5xl font-bold text-purple-900 mb-6">
-              A Top Rated Affiliate Marketing Network
-            </h1>
-            <p className="text-xl text-gray-700 mb-8">
-              Become a Partner with High-quality Publishers or Connect Your Audience with the world&apos;s leading Brands.
-            </p>
-            <Link
-              href="/signup"
-              className="inline-block px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-semibold text-lg"
-            >
-              GET STARTED NOW
-            </Link>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div>
+              <h1 className="text-5xl font-bold text-purple-900 mb-6">
+                A Top Rated Affiliate Marketing Network
+              </h1>
+              <p className="text-xl text-gray-700 mb-8">
+                Become a Partner with High-quality Publishers or Connect Your Audience with the world&apos;s leading Brands.
+              </p>
+              <Link
+                href="/signup"
+                className="inline-block px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-semibold text-lg"
+              >
+                GET STARTED NOW
+              </Link>
+            </div>
+            
+            {/* Image */}
+            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop"
+                alt="Affiliate Marketing Network - Business Partnership"
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-purple-600/30 to-transparent"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -314,13 +331,13 @@ export default function Home() {
       </section>
 
       {/* How We Stand Out Section */}
-      <section className="py-20 bg-gray-900 relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-purple-900"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 relative min-h-[500px] flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-900 via-purple-800 to-purple-700"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-2xl">
-            <div className="bg-blue-900/80 border-t-4 border-r-4 border-orange-500 p-8 rounded-lg">
+            <div className="bg-blue-900 border-t-4 border-r-4 border-orange-500 p-8 rounded-lg shadow-2xl">
               <h2 className="text-3xl font-bold text-white mb-6">How do we stand out?</h2>
-              <div className="space-y-4 text-white">
+              <div className="space-y-4 text-white text-base leading-relaxed">
                 <p>
                   We offer unique benefits to both advertisers and publishers. Our platform provides tracking links for accurate commission tracking, helping advertisers reach their target audience through cashback, vouchers, and discounts.
                 </p>
