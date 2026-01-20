@@ -10,168 +10,142 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <header className="bg-cyan-50 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
+            {/* Logo */}
             <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-purple-600">
+              <Link href="/" className="text-2xl font-bold text-teal-700">
                 AFF-NET
               </Link>
             </div>
-            <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-purple-600 font-medium">
+
+            {/* Center Navigation Bar */}
+            <nav className="hidden md:flex items-center bg-white rounded-full px-6 py-2 shadow-sm">
+              <Link href="/" className="text-teal-700 font-medium px-3 py-1">
                 Home
               </Link>
-              <Link href="#advertisers" className="text-gray-700 hover:text-purple-600 font-medium">
+              <Link href="#advertisers" className="text-gray-400 font-medium px-3 py-1 hover:text-gray-600">
                 Advertisers
               </Link>
-              <Link href="#publishers" className="text-gray-700 hover:text-purple-600 font-medium">
+              <div className="w-px h-4 bg-cyan-300 mx-2"></div>
+              <Link href="#publishers" className="text-gray-400 font-medium px-3 py-1 hover:text-gray-600">
                 Publishers
               </Link>
-              <Link href="#contact" className="text-gray-700 hover:text-purple-600 font-medium">
+              <Link href="#contact" className="text-gray-400 font-medium px-3 py-1 hover:text-gray-600">
                 Contact
               </Link>
             </nav>
-            <div className="flex items-center gap-4">
-              <Link
-                href="/signup"
-                className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium"
-              >
-                GET STARTED
-              </Link>
+
+            {/* Right Side Actions */}
+            <div className="flex items-center gap-3">
               <button
                 onClick={() => setSidebarOpen(true)}
-                className="p-2 text-gray-700 hover:text-purple-600 transition"
+                className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition"
                 aria-label="Open menu"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </button>
+              <Link
+                href="/login"
+                className="px-6 py-2 bg-gradient-to-r from-teal-600 to-green-600 text-white rounded-lg hover:from-teal-700 hover:to-green-700 transition font-medium uppercase text-sm"
+              >
+                GET STARTED
+              </Link>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Sidebar Overlay */}
+      {/* Quick Menu Popup */}
       {sidebarOpen && (
         <>
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-50"
+            className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-50"
             onClick={() => setSidebarOpen(false)}
           ></div>
-          <div className="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl z-50 overflow-y-auto">
-            <div className="p-8">
-              {/* Close Button */}
-              <button
-                onClick={() => setSidebarOpen(false)}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-                aria-label="Close menu"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-
-              {/* Logo and Company Name */}
-              <div className="mb-8">
-                <div className="flex items-center mb-2">
-                  <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-white font-bold text-xl">A</span>
-                  </div>
-                  <h1 className="text-2xl font-bold text-gray-900">AFF-NET</h1>
-                </div>
-                <p className="text-sm text-gray-600">The Next Generation Partnership Management Platform.</p>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex gap-3 mb-8">
-                <Link
-                  href="/login"
+          <div className="fixed inset-0 flex items-center justify-center z-50 pointer-events-none">
+            <div className="bg-white rounded-lg shadow-2xl w-full max-w-md mx-4 pointer-events-auto">
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-gray-200">
+                <h2 className="text-xl font-bold text-gray-900">Quick Menu</h2>
+                <button
                   onClick={() => setSidebarOpen(false)}
-                  className="flex-1 px-4 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium text-center"
+                  className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition"
+                  aria-label="Close menu"
                 >
-                  LOGIN
-                </Link>
-                <Link
-                  href="/signup"
-                  onClick={() => setSidebarOpen(false)}
-                  className="flex-1 px-4 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition font-medium text-center"
-                >
-                  SIGNUP
-                </Link>
+                  <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
 
-              {/* Contact Information */}
-              <div className="space-y-6 mb-8">
-                {/* Location */}
-                <div>
-                  <div className="flex items-start mb-2">
-                    <svg className="w-5 h-5 text-purple-600 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <div>
-                      <p className="font-semibold text-gray-900">Queensland, Australia</p>
-                      <p className="text-sm text-gray-600">36 Whistler Place, Pallara, Brisbane</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* General Support Email */}
-                <div>
-                  <div className="flex items-start mb-2">
-                    <svg className="w-5 h-5 text-purple-600 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <div>
-                      <p className="font-semibold text-gray-900">info@affnet.com</p>
-                      <p className="text-sm text-gray-600">24/7 online support</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Specific Contact Emails */}
-                <div>
-                  <div className="flex items-start">
-                    <svg className="w-5 h-5 text-purple-600 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <div>
-                      <p className="font-semibold text-gray-900 mb-1">advertisers@affnet.com</p>
-                      <p className="font-semibold text-gray-900">publishers@affnet.com</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Media Icons */}
-              <div className="flex gap-3">
-                <a href="#" className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-purple-600 transition">
-                  <svg className="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                  </svg>
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-purple-600 transition">
-                  <svg className="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                  </svg>
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-purple-600 transition">
-                  <svg className="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-purple-600 transition">
-                  <svg className="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-purple-600 transition">
-                  <svg className="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22c-5.514 0-10-4.486-10-10S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10zm-2-14h4v8h-4V8zm2 4c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm0-4c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1z" />
-                  </svg>
-                </a>
+              {/* Menu Items */}
+              <div className="p-6">
+                <ul className="space-y-2">
+                  <li>
+                    <Link
+                      href="/login"
+                      onClick={() => setSidebarOpen(false)}
+                      className="flex items-center justify-between p-4 rounded-lg hover:bg-gray-50 transition group"
+                    >
+                      <span className="text-gray-900 font-medium">Publisher Login</span>
+                      <svg className="w-5 h-5 text-gray-400 group-hover:text-teal-600 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/login"
+                      onClick={() => setSidebarOpen(false)}
+                      className="flex items-center justify-between p-4 rounded-lg hover:bg-gray-50 transition group"
+                    >
+                      <span className="text-gray-900 font-medium">Advertiser Login</span>
+                      <svg className="w-5 h-5 text-gray-400 group-hover:text-teal-600 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/login"
+                      onClick={() => setSidebarOpen(false)}
+                      className="flex items-center justify-between p-4 rounded-lg hover:bg-gray-50 transition group"
+                    >
+                      <span className="text-gray-900 font-medium">Influencer Login</span>
+                      <svg className="w-5 h-5 text-gray-400 group-hover:text-teal-600 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/signup"
+                      onClick={() => setSidebarOpen(false)}
+                      className="flex items-center justify-between p-4 rounded-lg hover:bg-gray-50 transition group"
+                    >
+                      <span className="text-gray-900 font-medium">Register New Account</span>
+                      <svg className="w-5 h-5 text-gray-400 group-hover:text-teal-600 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#contact"
+                      onClick={() => setSidebarOpen(false)}
+                      className="flex items-center justify-between p-4 rounded-lg hover:bg-gray-50 transition group"
+                    >
+                      <span className="text-gray-900 font-medium">Contact</span>
+                      <svg className="w-5 h-5 text-gray-400 group-hover:text-teal-600 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -179,37 +153,191 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section className="relative bg-gray-100 min-h-[600px] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Text Content */}
-            <div>
-              <h1 className="text-5xl font-bold text-purple-900 mb-6">
-                A Top Rated Affiliate Marketing Network
+      <section className="relative bg-gradient-to-br from-teal-50 via-cyan-50 to-teal-100 min-h-[90vh] flex items-center overflow-hidden">
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Section - Text Content */}
+            <div className="z-10">
+              {/* Enterprise Tag */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 rounded-full mb-6">
+                <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span className="text-teal-700 font-semibold text-sm">Enterprise-Grade Affiliate Platform</span>
+              </div>
+
+              {/* Main Headline */}
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Grow Your Online Revenue With Ease.
               </h1>
-              <p className="text-xl text-gray-700 mb-8">
-                Become a Partner with High-quality Publishers or Connect Your Audience with the world&apos;s leading Brands.
+
+              {/* Description */}
+              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                Aff-Net supports publishers, shopping platforms and creators in earning at every stage of the customer journey. Easily turn your content and shopping experiences into affiliate income.
               </p>
+
+              {/* CTA Button */}
               <Link
                 href="/signup"
-                className="inline-block px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-semibold text-lg"
+                className="inline-block px-8 py-4 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition font-semibold text-lg mb-8"
               >
-                GET STARTED NOW
+                JOIN AFF-NET
               </Link>
+
+              {/* Info Badges */}
+              <div className="flex flex-wrap items-center gap-6">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700 font-medium">PCI DSS Compliant</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <svg className="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  <span className="text-gray-700 font-medium">Billions Processed</span>
+                </div>
+              </div>
             </div>
             
-            {/* Image */}
-            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop"
-                alt="Affiliate Marketing Network - Business Partnership"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-purple-600/30 to-transparent"></div>
+            {/* Right Section - Performance Dashboard Card */}
+            <div className="relative z-10">
+              {/* Ellipse Images - Positioned behind the card with proper layering */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 0 }}>
+                {/* Ellipse 3 - Largest outer circle (farthest behind) */}
+                <div className="absolute relative w-[1400px] h-[1400px] opacity-25">
+                  <Image
+                    src="/Ellipse 3.png"
+                    alt="Background ellipse 3"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+                {/* Ellipse 4 - Medium circle (middle layer) */}
+                <div className="absolute relative w-[1200px] h-[1200px] opacity-30">
+                  <Image
+                    src="/Ellipse 4.png"
+                    alt="Background ellipse 4"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+                {/* Ellipse 2 - Center/main ellipse (innermost) */}
+                <div className="absolute relative w-[1000px] h-[1000px] opacity-35">
+                  <Image
+                    src="/Ellipse 2.png"
+                    alt="Background ellipse"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+              </div>
+
+              {/* Decorative Icons - Semi-transparent teal floating icons with frosted glass effect */}
+              {/* Top-left: Upward arrow/trend line icon */}
+              <div className="absolute -top-6 -left-6 w-12 h-12 bg-teal-400/70 backdrop-blur-md rounded-lg flex items-center justify-center shadow-xl z-20 border border-teal-300/30">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              
+              {/* Top-right: Gear/Settings icon */}
+              <div className="absolute -top-6 -right-6 w-12 h-12 bg-teal-400/70 backdrop-blur-md rounded-lg flex items-center justify-center shadow-xl z-20 border border-teal-300/30">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              
+              {/* Mid-left: Information icon */}
+              <div className="absolute top-1/3 -left-6 w-12 h-12 bg-teal-400/70 backdrop-blur-md rounded-lg flex items-center justify-center shadow-xl z-20 border border-teal-300/30">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              
+              {/* Bottom-right: Lightning bolt icon */}
+              <div className="absolute -bottom-6 -right-6 w-12 h-12 bg-teal-400/70 backdrop-blur-md rounded-lg flex items-center justify-center shadow-xl z-20 border border-teal-300/30">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+
+              {/* Dashboard Card */}
+              <div className="relative bg-white rounded-2xl shadow-2xl p-8 transform rotate-[-2deg] hover:rotate-0 transition-transform duration-300" style={{ zIndex: 10 }}>
+                {/* Premium Tag - Dark Teal Rectangular with Rounded Corners */}
+                <div className="absolute top-4 right-4 px-3 py-1 bg-teal-800 rounded-lg">
+                  <span className="text-white font-semibold text-xs">Premium</span>
+                </div>
+
+                {/* Dashboard Header */}
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-1">Performance Dashboard</h3>
+                  <p className="text-gray-500 text-sm">Real-time revenue tracking</p>
+                </div>
+
+                {/* Metrics Grid */}
+                <div className="grid grid-cols-2 gap-6 mb-6">
+                  {/* Today's Revenue - With teal dollar icon and TEAL amount */}
+                  <div className="flex items-start gap-3">
+                    <div className="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-4xl font-bold text-teal-600 mb-1">$12,458</p>
+                      <p className="text-gray-500 text-sm">Today&apos;s Revenue</p>
+                    </div>
+                  </div>
+
+                  {/* Growth - Black text */}
+                  <div>
+                    <p className="text-4xl font-bold text-gray-900 mb-1">+28%</p>
+                    <p className="text-gray-500 text-sm">Growth</p>
+                  </div>
+                </div>
+
+                {/* Bar Chart - Teal vertical bars with light gray background */}
+                <div className="mb-6 bg-gray-100 rounded-lg p-3">
+                  <div className="flex items-end gap-2 h-20">
+                    <div className="flex-1 bg-teal-500 rounded-t" style={{ height: '60%' }}></div>
+                    <div className="flex-1 bg-teal-500 rounded-t" style={{ height: '80%' }}></div>
+                    <div className="flex-1 bg-teal-500 rounded-t" style={{ height: '45%' }}></div>
+                    <div className="flex-1 bg-teal-500 rounded-t" style={{ height: '100%' }}></div>
+                    <div className="flex-1 bg-teal-500 rounded-t" style={{ height: '70%' }}></div>
+                  </div>
+                </div>
+
+                {/* Bottom Metrics */}
+                <div className="grid grid-cols-2 gap-6">
+                  {/* Active Campaigns */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-gray-600 text-sm">Active Campaigns</p>
+                      <p className="text-2xl font-bold text-gray-900">42</p>
+                    </div>
+                  </div>
+
+                  {/* Conversion Rate - Lime green color */}
+                  <div>
+                    <p className="text-gray-600 text-sm">Conversion Rate</p>
+                    <p className="text-2xl font-bold text-lime-500">8.2%</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -229,180 +357,298 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works Section */}
+      {/* Our Affiliate Partners Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">How Does AFF-NET Work</h2>
-            <p className="text-xl text-gray-600">Gear up your affiliate life with AFF-NET&apos;s affiliate network.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              {
-                icon: (
-                  <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                ),
-                title: 'Join',
-                description: 'Get started with us.',
-              },
-              {
-                icon: (
-                  <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                ),
-                title: 'Partnership',
-                description: 'Build a strong Partnership.',
-              },
-              {
-                icon: (
-                  <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                ),
-                title: 'Enjoy',
-                description: 'Enjoy the latest commissions.',
-              },
-            ].map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="flex justify-center mb-4">
-                  <div className="p-4 bg-purple-100 rounded-full text-purple-600">{step.icon}</div>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+          {/* Header Section */}
+          <div className="text-center mb-12">
+            {/* Teal Pill Button */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 rounded-full mb-6 shadow-sm">
+              <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+              </svg>
+              <span className="text-teal-700 font-semibold text-sm">Our Affiliate Partners</span>
+            </div>
 
-      {/* Your Definitive Choice Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Your Definitive Choice In CPA Networks</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose AFF-NET for your affiliate marketing needs. We provide a robust platform for advertisers and publishers to connect and grow together.
+            {/* Headline */}
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Work With Top Affiliate Networks
+            </h2>
+
+            {/* Description */}
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Aff-Net partners with leading affiliate networks to support publishers and creators in maximizing their revenue from commerce traffic.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: (
-                  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                ),
-                title: 'Diversity Partnerships',
-                description: 'Achieve profitable growth through diverse partnerships with top brands and publishers.',
-                color: 'text-purple-600',
-              },
-              {
-                icon: (
-                  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                ),
-                title: 'Reliable Platform',
-                description: 'A trustworthy and easy-to-use platform for both advertisers and publishers.',
-                color: 'text-blue-600',
-              },
-              {
-                icon: (
-                  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                ),
-                title: 'Robust CPA Network',
-                description: 'A robust CPA network for affiliate growth, offering better conversions, broader audiences, low risk, and high ROI.',
-                color: 'text-orange-600',
-              },
-            ].map((feature, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-sm p-8">
-                <div className={`${feature.color} mb-4`}>{feature.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* How We Stand Out Section */}
-      <section className="py-20 relative min-h-[500px] flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-900 via-purple-800 to-purple-700"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-2xl">
-            <div className="bg-blue-900 border-t-4 border-r-4 border-orange-500 p-8 rounded-lg shadow-2xl">
-              <h2 className="text-3xl font-bold text-white mb-6">How do we stand out?</h2>
-              <div className="space-y-4 text-white text-base leading-relaxed">
-                <p>
-                  We offer unique benefits to both advertisers and publishers. Our platform provides tracking links for accurate commission tracking, helping advertisers reach their target audience through cashback, vouchers, and discounts.
-                </p>
-                <p>
-                  Publishers benefit from our extensive network of top brands, competitive commission rates, and reliable payment systems. We make affiliate marketing simple and profitable.
-                </p>
-                <p>
-                  Our advanced tracking technology ensures every sale is accurately attributed, giving you complete transparency and control over your affiliate campaigns.
-                </p>
+          {/* Affiliate Network Logos */}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6 mb-16">
+            {/* impact.com */}
+            <div className="bg-white rounded-lg shadow-md p-6 flex items-center justify-center hover:shadow-lg transition">
+              <div className="text-center">
+                <span className="text-2xl font-bold text-red-600">impact</span>
+                <span className="text-2xl font-bold text-gray-900">.com</span>
               </div>
+            </div>
+
+            {/* Rakuten */}
+            <div className="bg-white rounded-lg shadow-md p-6 flex items-center justify-center hover:shadow-lg transition">
+              <span className="text-2xl font-bold text-red-600">Rakuten</span>
+            </div>
+
+            {/* CJ Affiliate (G logo) */}
+            <div className="bg-white rounded-lg shadow-md p-6 flex items-center justify-center hover:shadow-lg transition">
+              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center">
+                <span className="text-3xl font-bold text-white">G</span>
+              </div>
+            </div>
+
+            {/* Partnerize */}
+            <div className="bg-white rounded-lg shadow-md p-6 flex items-center justify-center hover:shadow-lg transition">
+              <span className="text-xl font-bold text-gray-900">Partnerize</span>
+            </div>
+
+            {/* Admitad */}
+            <div className="bg-white rounded-lg shadow-md p-6 flex items-center justify-center hover:shadow-lg transition">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-purple-600 rounded-lg mb-2 mx-auto"></div>
+                <span className="text-lg font-semibold text-purple-700">Admitad</span>
+              </div>
+            </div>
+
+            {/* paidonresults */}
+            <div className="bg-white rounded-lg shadow-md p-6 flex items-center justify-center hover:shadow-lg transition">
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-1 mb-1">
+                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                </div>
+                <span className="text-xs font-bold text-gray-900">paidonresults</span>
+              </div>
+            </div>
+
+            {/* impact.com (duplicate) */}
+            <div className="bg-white rounded-lg shadow-md p-6 flex items-center justify-center hover:shadow-lg transition">
+              <div className="text-center">
+                <span className="text-2xl font-bold text-red-600">impact</span>
+                <span className="text-2xl font-bold text-gray-900">.com</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Statistics/Metrics Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Active Publishers */}
+            <div className="bg-teal-50 rounded-xl p-8 shadow-sm hover:shadow-md transition">
+              <p className="text-5xl font-bold text-gray-900 mb-2">500+</p>
+              <p className="text-lg text-gray-700">Active Publishers</p>
+            </div>
+
+            {/* Active Offers */}
+            <div className="bg-teal-50 rounded-xl p-8 shadow-sm hover:shadow-md transition">
+              <p className="text-5xl font-bold text-gray-900 mb-2">20K+</p>
+              <p className="text-lg text-gray-700">Active Offers</p>
+            </div>
+
+            {/* Annual Revenue */}
+            <div className="bg-teal-50 rounded-xl p-8 shadow-sm hover:shadow-md transition">
+              <p className="text-5xl font-bold text-gray-900 mb-2">$100M+</p>
+              <p className="text-lg text-gray-700">Annual Revenue</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Partnership Opportunities Section */}
-      <section className="py-20 bg-white" id="publishers">
+      {/* Impact By The Numbers Section */}
+      <section className="py-20" style={{ background: 'linear-gradient(180deg, #022C2E 0%, #064D51 50%, #022C2E 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header Section */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Partnership Opportunities</h2>
-            <p className="text-xl text-gray-600">VARIOUS PARTNERSHIP OPPORTUNITIES FOR ONBOARD ADVERTISERS</p>
+            {/* GLOBAL REACH Pill Tag */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-600 rounded-full mb-6">
+              <div className="w-2 h-2 bg-white rounded-full"></div>
+              <span className="text-white font-bold text-xs uppercase tracking-wide">GLOBAL REACH</span>
+            </div>
+
+            {/* Main Headline */}
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Impact By The Numbers
+            </h2>
+
+            {/* Description */}
+            <p className="text-lg text-white/90 max-w-2xl mx-auto">
+              Explore the reach of our global operations and the difference we are making worldwide.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: 'Content Publishers', description: 'Reach a genuine audience through content websites, blogs, and reviews.' },
-              { title: 'Coupons & Deals', description: 'Attract consumers with discounts, coupons, and deals.' },
-              { title: 'Influencers', description: 'Connect with influencers to promote brands.' },
-              { title: 'Email Marketers', description: 'Use email marketing to reach new and old customers.' },
-              { title: 'Social Media', description: 'Leverage social media for effective brand promotion.' },
-              { title: 'Reviews/Comparison', description: 'Use reviews and comparisons to help customers make informed decisions.' },
-            ].map((opportunity, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6 text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+
+          {/* Statistics Cards Section */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {/* Card 1 - Merchants worldwide */}
+            <div className="rounded-xl p-8 shadow-lg hover:shadow-xl transition border border-[#374151]/30 backdrop-blur-[24px]" style={{ background: 'linear-gradient(180deg, rgba(31, 41, 55, 0.6) 60%, rgba(17, 24, 39, 0.6) 40%)' }}>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{opportunity.title}</h3>
-                <p className="text-gray-600">{opportunity.description}</p>
+                <div>
+                  <p className="text-6xl font-bold text-white mb-2">48.5k</p>
+                  <p className="text-lg text-white/90">Merchants worldwide</p>
+                </div>
               </div>
-            ))}
+            </div>
+
+            {/* Card 2 - Networks */}
+            <div className="rounded-xl p-8 shadow-lg hover:shadow-xl transition border border-[#374151]/30 backdrop-blur-[24px]" style={{ background: 'linear-gradient(180deg, rgba(31, 41, 55, 0.6) 60%, rgba(17, 24, 39, 0.6) 40%)' }}>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-6xl font-bold text-white mb-2">50+</p>
+                  <p className="text-lg text-white/90">Networks</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3 - Sales every day */}
+            <div className="rounded-xl p-8 shadow-lg hover:shadow-xl transition border border-[#374151]/30 backdrop-blur-[24px]" style={{ background: 'linear-gradient(180deg, rgba(31, 41, 55, 0.6) 60%, rgba(17, 24, 39, 0.6) 40%)' }}>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-6xl font-bold text-white mb-2">$4.8m</p>
+                  <p className="text-lg text-white/90">Sales every day</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer Status Indicator */}
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-600 rounded-full">
+              <div className="w-2 h-2 bg-white rounded-full"></div>
+              <span className="text-white font-bold text-xs uppercase tracking-wide">Real-Time Data Updated Daily</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Latest Blog Posts Section */}
-      <section className="py-20 bg-gray-50">
+      {/* Trusted By Industry Leaders Section */}
+      <section className="py-20 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Latest Blog Posts</h2>
-            <p className="text-xl text-gray-600">Stay updated with the latest strategies and insights in affiliate marketing.</p>
+          {/* Header Section */}
+          <div className="text-center mb-12">
+            {/* Trust Of Industry Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-600 rounded-lg mb-6">
+              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+              </svg>
+              <span className="text-white font-semibold text-sm">Trust Of Industry</span>
+            </div>
+
+            {/* Main Headline */}
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Trusted By Industry Leaders
+            </h2>
+
+            {/* Sub-heading */}
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              In partnership with leading global brands to drive real success
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: 'Advantages of Joining an Affiliate Marketing Network', date: 'February 03, 2023' },
-              { title: 'The Role of Affiliate Marketing Networks in E-commerce', date: 'January 23, 2023' },
-              { title: 'How to Choose the Right Affiliate Marketing Network', date: 'February 08, 2023' },
-            ].map((post, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-sm p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{post.title}</h3>
-                <p className="text-gray-600 mb-4">By: AFF-NET Editor</p>
-                <p className="text-gray-500 text-sm mb-4">On: {post.date}</p>
-                <button className="text-purple-600 hover:text-purple-700 font-medium">READ MORE</button>
+
+          {/* Brand Logos */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
+            {/* Belkin */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6 flex items-center justify-center hover:shadow-md transition">
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-1 mb-2">
+                  <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
+                  <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
+                  <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
+                </div>
+                <span className="text-xl font-semibold text-gray-800">belkin</span>
               </div>
-            ))}
+            </div>
+
+            {/* COSTWAY */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6 flex items-center justify-center hover:shadow-md transition">
+              <div className="text-center">
+                <span className="text-xl font-bold text-gray-800">COST</span>
+                <span className="inline-block w-6 h-6 bg-orange-500 rounded ml-1 mr-1"></span>
+                <span className="text-xl font-bold text-gray-800">WAY</span>
+              </div>
+            </div>
+
+            {/* crocs */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6 flex items-center justify-center hover:shadow-md transition">
+              <span className="text-xl font-semibold text-gray-800">crocs</span>
+            </div>
+
+            {/* WOWANGEL */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6 flex items-center justify-center hover:shadow-md transition">
+              <div className="text-center">
+                <span className="text-lg font-bold text-gray-800">WOWANGEL</span>
+                <p className="text-xs text-gray-500 mt-1">Community Series</p>
+              </div>
+            </div>
+
+            {/* Beginning */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6 flex items-center justify-center hover:shadow-md transition">
+              <span className="text-xl font-semibold text-gray-800">Beginning</span>
+            </div>
+
+            {/* '47 Brand */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6 flex items-center justify-center hover:shadow-md transition">
+              <div className="text-center">
+                <div className="w-16 h-16 border-2 border-gray-800 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span className="text-2xl font-bold text-gray-800">47</span>
+                </div>
+                <span className="text-xs font-semibold text-gray-700">FORTY SEVEN</span>
+                <span className="text-xs font-semibold text-gray-700 block">BRAND</span>
+              </div>
+            </div>
+          </div>
+
+          {/* JOIN AFF-NET Button */}
+          <div className="text-center">
+            <Link
+              href="/signup"
+              className="inline-block px-8 py-4 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition font-semibold text-lg uppercase"
+            >
+              JOIN AFF-NET
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Ready To Start Affiliate Marketing Section */}
+      <section className="py-20 bg-cyan-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            {/* Main Headline */}
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Ready To Start Affiliate Marketing?
+            </h2>
+
+            {/* Sub-heading */}
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+              Join thousands of successful businesses using Aff-Net premium solutions
+            </p>
+
+            {/* GET STARTED TODAY Button */}
+            <Link
+              href="/signup"
+              className="inline-block px-8 py-4 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition font-semibold text-lg uppercase"
+            >
+              GET STARTED TODAY
+            </Link>
           </div>
         </div>
       </section>
@@ -422,53 +668,31 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12" id="contact">
+      <footer className="text-white py-12" id="contact" style={{ background: 'linear-gradient(180deg, #022C2E 0%, #064D51 50%, #022C2E 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             {/* AFF-NET Info */}
             <div>
               <h3 className="text-2xl font-bold mb-4">AFF-NET</h3>
-              <p className="text-gray-400 mb-4">AFF-NET is the Next Generation Partnership Management Platform.</p>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                  </svg>
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                  </svg>
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
-                </a>
-              </div>
+              <p className="text-white/80 mb-4">The leading affiliate marketing platform connecting publishers and merchants worldwide.</p>
             </div>
 
             {/* Explore More */}
             <div>
-              <h4 className="text-lg font-semibold mb-4">EXPLORE MORE</h4>
+              <h4 className="text-lg font-bold mb-4">Explore More</h4>
               <ul className="space-y-2">
                 <li>
-                  <Link href="#advertisers" className="text-gray-400 hover:text-white">
+                  <Link href="#advertisers" className="text-white/80 hover:text-white">
                     Advertisers
                   </Link>
                 </li>
                 <li>
-                  <Link href="#publishers" className="text-gray-400 hover:text-white">
+                  <Link href="#publishers" className="text-white/80 hover:text-white">
                     Publishers
                   </Link>
                 </li>
                 <li>
-                  <Link href="#contact" className="text-gray-400 hover:text-white">
+                  <Link href="#contact" className="text-white/80 hover:text-white">
                     Contact
                   </Link>
                 </li>
@@ -477,26 +701,26 @@ export default function Home() {
 
             {/* Legal Information */}
             <div>
-              <h4 className="text-lg font-semibold mb-4">LEGAL INFORMATION</h4>
+              <h4 className="text-lg font-bold mb-4">Legal Information</h4>
               <ul className="space-y-2">
                 <li>
-                  <Link href="#" className="text-gray-400 hover:text-white">
+                  <Link href="#" className="text-white/80 hover:text-white">
                     Terms & Conditions
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-gray-400 hover:text-white">
+                  <Link href="#" className="text-white/80 hover:text-white">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-gray-400 hover:text-white">
+                  <Link href="#" className="text-white/80 hover:text-white">
                     Imprint
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-gray-400 hover:text-white">
-                    MediaKit
+                  <Link href="#" className="text-white/80 hover:text-white">
+                    Mediakit
                   </Link>
                 </li>
               </ul>
@@ -504,17 +728,17 @@ export default function Home() {
 
             {/* Get Support */}
             <div>
-              <h4 className="text-lg font-semibold mb-4">GET SUPPORT</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>info@affnet.com</li>
+              <h4 className="text-lg font-bold mb-4">Get Support</h4>
+              <ul className="space-y-2 text-white/80">
+                <li>Info@affnet.com</li>
                 <li>advertisers@affnet.com</li>
                 <li>publishers@affnet.com</li>
                 <li>+1 (555) 123-4567</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>AFF-NET PTY (LTD) © 2024 | All Rights Reserved.</p>
+          <div className="border-t border-teal-700/30 pt-8 text-center text-white/80">
+            <p>Copyright © 2026 AFF-NET PTY LTD. All rights reserved.</p>
           </div>
         </div>
       </footer>
